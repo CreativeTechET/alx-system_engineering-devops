@@ -2,7 +2,7 @@
 """ module contains reddit data parsing function
 """
 
-import requests
+import requests as req
 
 
 def number_of_subscribers(subreddit):
@@ -17,7 +17,6 @@ def number_of_subscribers(subreddit):
         header = {
                 "User-Agent": "Buka alx Project | 2023"
                 }
-        r = requests.get('http://www.reddit.com/r/{}/about.json'.format(subreddit),
-                         headers=header)
+        r = req.get('http://www.reddit.com/r/{}/about.json'
+                    .format(subreddit), headers=header)
         return r.json().get("data", {}).get("subscribers", 0)
-
