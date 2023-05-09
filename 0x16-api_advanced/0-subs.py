@@ -1,7 +1,9 @@
 #!/usr/bin/python3
 """ module contains reddit data parsing function
 """
+
 import requests
+
 
 def number_of_subscribers(subreddit):
     """ function to get send request to redit api
@@ -15,5 +17,6 @@ def number_of_subscribers(subreddit):
         header = {
                 "User-Agent": "Buka alx Project | 2023"
                 }
-        r = requests.get('http://www.reddit.com/r/{}/about.json'.format(subreddit), headers=header)
-        return int(r.json().get("data", {}).get("subscribers"))
+        r = requests.get('http://www.reddit.com/r/{}/about.json'.format(subreddit),
+                         headers=header)
+        return r.json().get("data", {}).get("subscribers", 0)
